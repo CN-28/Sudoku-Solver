@@ -62,4 +62,6 @@ sudoku = [
 [0,8,0,3,0,2,0,0,4]
 ]
 
-solve(sudoku)
+if solve(sudoku) == None:
+    print("There is no solution!")
+    
