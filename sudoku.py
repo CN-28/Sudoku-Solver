@@ -19,43 +19,36 @@ def isPossible(sudoku, row, col, number):
 
     return True            
 
-import time
-def solve(sudoku,row=0, col=0):
-    if col > 8 or row > 8:
-        return
 
-    if row == 8 and col == 8:
-        temp_alt = True
+def solve(sudoku, row=0, col=0):
+    if row == 9:
         for x in sudoku:
-            if x.count(0) != 0:
-                temp_alt = False
-                break
-        if temp_alt:
-            for x in sudoku:
-                print(x)
-            exit(0)
+            print(x)
+        exit(0)
+    if col > 8:
+        return
+    
+    #checking if sudoku is solved 
+    
 
+    #checking if there is any number inserted in square 1x1 
     if sudoku[row][col] == 0:
         for number in range(1, 10):
-            temp = False
-            if isPossible(sudoku, row, col, number):
-                temp = True
-                sudoku[row][col] = number
-                
-                
+            if isPossible(sudoku, row, col, number):#checking if it is possible to insert
+                sudoku[row][col] = number   
                 if col < 8:
                     solve(sudoku, row, col + 1)
-                elif col == 8 and row < 8:
+                else:
                     solve(sudoku, row + 1, 0)
 
         else:
             sudoku[row][col] = 0
-            return
-            
+
+    #if there is number inserted in square 1x1 keep going
     else:
         if col < 8:
             solve(sudoku, row, col + 1)
-        elif col == 8 and row < 8:
+        else:
             solve(sudoku, row + 1, 0)
 
 
