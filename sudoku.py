@@ -33,7 +33,7 @@ def solve(sudoku, row=0, col=0):
     if sudoku[row][col] == 0:
         for number in range(1, 10):
             if isPossible(sudoku, row, col, number):#checking if it is possible to insert
-                sudoku[row][col] = number   
+                sudoku[row][col] = number #filling sudoku array with values
                 if col < 8:
                     solve(sudoku, row, col + 1)
                 else:
@@ -64,4 +64,3 @@ sudoku = [
 
 if solve(sudoku) == None:
     print("There is no solution!")
-    
