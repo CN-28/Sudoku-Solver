@@ -21,15 +21,13 @@ def isPossible(sudoku, row, col, number):
 
 
 def solve(sudoku, row=0, col=0):
-    if row == 9:
+    if row == 9: #checking if sudoku is solved
         for x in sudoku:
             print(x)
         exit(0)
-    if col > 8:
+
+    if col > 8: #checking if col is not out of range
         return
-    
-    #checking if sudoku is solved 
-    
 
     #checking if there is any number inserted in square 1x1 
     if sudoku[row][col] == 0:
