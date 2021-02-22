@@ -1,5 +1,4 @@
 from tkinter import *
-from copy import deepcopy
 
 #Sudoke Solver funtions
 
