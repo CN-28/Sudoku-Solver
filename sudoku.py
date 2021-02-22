@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 #function to check if it is possible to insert a number in square
 def isPossible(sudoku, row, col, number):
     
@@ -22,9 +24,9 @@ def isPossible(sudoku, row, col, number):
 
 def solve(sudoku, row=0, col=0):
     if row == 9: #checking if sudoku is solved
-        for x in sudoku:
-            print(x)
-        exit(0)
+        global tab
+        tab = deepcopy(sudoku)
+        return
 
     if col > 8: #checking if col is not out of range
         return
@@ -61,6 +63,7 @@ sudoku = [
 [0,2,0,0,0,0,7,3,0],
 [0,8,0,3,0,2,0,0,4]
 ]
-
-if solve(sudoku) == None:
-    print("There is no solution!")
+tab = []
+solve(sudoku)
+for x in tab:
+    print(x)
