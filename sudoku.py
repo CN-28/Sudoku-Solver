@@ -35,17 +35,17 @@ def click():
             return
 
         #checking if there is any number inserted in square 1x1 
-        if sudoku[row][col] == 0:
+        if sudoku[row][col] == "":
             for number in range(1, 10):
-                if isPossible(sudoku, row, col, number):#checking if it is possible to insert
-                    sudoku[row][col] = number #filling sudoku array with values
+                if isPossible(sudoku, row, col, str(number)):#checking if it is possible to insert
+                    sudoku[row][col] = str(number) #filling sudoku array with values
                     if col < 8:
                         solve(sudoku, row, col + 1)
                     else:
                         solve(sudoku, row + 1, 0)
 
             else:
-                sudoku[row][col] = 0
+                sudoku[row][col] = ""
 
         #if there is number inserted in square 1x1 keep going
         else:
@@ -58,13 +58,13 @@ def click():
     sudoku = [[" " for _ in range(9)] for _ in range(9)]
     for i in range(9):
         for j in range(9):
-            sudoku[j][i] = tab1[i][j].get()
+            sudoku[j][i] = input_container[i][j].get()
     
     tab_pom = []
     solve(sudoku)
     for i in range(9):
         for j in range(9):
-            tab1[j][i].set(tab_pom[i][j])
+            input_container[j][i].set(tab_pom[i][j])
 #end function
 
 
@@ -84,8 +84,7 @@ input_container = [[StringVar() for _ in range(9)] for _ in range(9)]
 for i in range(9):
     for j in range(9):
         #configuring entry and saving it to the array, so we can easily access it
-        tab[i][j] = Entry(window, highlightbackground='black', highlightthickness=1, bd='0', fg='black', justify='center', font=("Canvas", 25, 'bold'),
-         textvariable=input_container[i][j])
+        tab[i][j] = Entry(window, highlightbackground='black', highlightthickness=1, bd='0', fg='black', justify='center', font=("Canvas", 25, 'bold'), textvariable=input_container[i][j])
         #displaying entries on the window
         tab[i][j].place(x=45 + 50*i, y = 25 + 50*j, width=50, height=50)      
 
