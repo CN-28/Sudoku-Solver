@@ -1,3 +1,4 @@
+from tkinter import *
 from copy import deepcopy
 
 #function to check if it is possible to insert a number in square
@@ -67,3 +68,12 @@ tab = []
 solve(sudoku)
 for x in tab:
     print(x)
+
+#setting up window, title and geometry of window
+window = Tk()
+window.title('Sudoku Solver')
+window.geometry('600x600')
+
+
+
+window.mainloop()
