@@ -87,11 +87,11 @@ for i in range(9):
         tab[i][j] = Entry(window, bd='1', fg='black', justify='center', font=("Canvas", 25, 'bold'), textvariable=input_container[i][j])
         #displaying entries on the window
         if j % 3 == 0 and i % 3 == 0 and i > 0 and j > 0:
-            tab[i][j].place(x=45 + 50*i + 5, y = 25 + 50*j + 5, width=50, height=50)  
+            tab[i][j].place(x=45 + 50*i + 7, y = 25 + 50*j + 7, width=50, height=50)  
         elif j % 3 == 0 and j > 0:
-            tab[i][j].place(x=45 + 50*i, y = 25 + 50*j + 5, width=50, height=50)      
+            tab[i][j].place(x=45 + 50*i, y = 25 + 50*j + 7, width=50, height=50)      
         elif i % 3 == 0 and i > 0:
-            tab[i][j].place(x=45 + 50*i + 5, y = 25 + 50*j, width=50, height=50)  
+            tab[i][j].place(x=45 + 50*i + 7, y = 25 + 50*j, width=50, height=50)  
         else:
             tab[i][j].place(x=45 + 50*i, y = 25 + 50*j, width=50, height=50)          
 
