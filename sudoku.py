@@ -81,8 +81,8 @@ for i in range(9):
     for j in range(9):
         #configuring entry and saving it to the array, so we can easily access it
         tab[i][j] = Entry(window, bd='1', fg='black', justify='center', font=("Canvas", 25, 'bold'), textvariable=input_container[i][j])
-        #displaying entries on the window 
         
+        #displaying entries on the window 
         tab[i][j].place(x = 45 + 50*i + (i//3)*7, y = 25 + 50*j + (j//3)*7, width=50, height=50)
  
 
