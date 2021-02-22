@@ -60,7 +60,7 @@ def click():
         for j in range(9):
             sudoku[j][i] = input_container[i][j].get()
     
-    tab_pom = []
+    tab_pom = [["" for _ in range(9)] for _ in range(9)]
     solve(sudoku)
     for i in range(9):
         for j in range(9):
@@ -84,9 +84,16 @@ input_container = [[StringVar() for _ in range(9)] for _ in range(9)]
 for i in range(9):
     for j in range(9):
         #configuring entry and saving it to the array, so we can easily access it
-        tab[i][j] = Entry(window, highlightbackground='black', highlightthickness=1, bd='0', fg='black', justify='center', font=("Canvas", 25, 'bold'), textvariable=input_container[i][j])
+        tab[i][j] = Entry(window, bd='1', fg='black', justify='center', font=("Canvas", 25, 'bold'), textvariable=input_container[i][j])
         #displaying entries on the window
-        tab[i][j].place(x=45 + 50*i, y = 25 + 50*j, width=50, height=50)      
+        if j % 3 == 0 and i % 3 == 0 and i > 0 and j > 0:
+            tab[i][j].place(x=45 + 50*i + 5, y = 25 + 50*j + 5, width=50, height=50)  
+        elif j % 3 == 0 and j > 0:
+            tab[i][j].place(x=45 + 50*i, y = 25 + 50*j + 5, width=50, height=50)      
+        elif i % 3 == 0 and i > 0:
+            tab[i][j].place(x=45 + 50*i + 5, y = 25 + 50*j, width=50, height=50)  
+        else:
+            tab[i][j].place(x=45 + 50*i, y = 25 + 50*j, width=50, height=50)          
 
 #configuring button to get data with click function
 Button(window, text="SOLVE", font=('Canvas', 10, 'bold'), width=5, command=click).place(x=40, y=500, width=60, height=40)
