@@ -86,11 +86,12 @@ input_container = [[StringVar() for _ in range(9)] for _ in range(9)]
 for i in range(9):
     for j in range(9):
         #configuring entry and saving it to the array, so we can easily access it
-        tab[i][j] = Entry(window, bd='1', fg='black', justify='center', font=("Canvas", 25, 'bold'), textvariable=input_container[i][j])
+        tab[i][j] = Entry(window, highlightthickness='0.5', highlightbackground='black', bd='0.5', fg='black', justify='center', font=("Canvas", 25, 'bold'), textvariable=input_container[i][j])
         
         #displaying entries on the window 
         tab[i][j].place(x = 45 + 50*i + (i//3)*7, y = 25 + 50*j + (j//3)*7, width=50, height=50)
  
+
 
 #configuring "SOLVE" button to get data with click function
 Button(window, text="SOLVE", font=('Canvas', 10, 'bold'), width=5, command=click).place(x=40, y=500, width=60, height=40)
