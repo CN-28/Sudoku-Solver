@@ -60,6 +60,7 @@ def click():
     #checking input from user
     temp = True
     valid_numbers = set(str(_) for _ in range(1, 10))
+    valid_numbers.add("")
     for i in range(9):
         for j in range(9):
             if (sudoku[i][j] != "" and not isPossible(sudoku, i, j, str(sudoku[i][j]))) or\
@@ -77,7 +78,7 @@ def click():
     else: 
         display_error = Label(window, text="This sudoku is not solvable, please enter valid numbers!", font=('Canvas', 15, 'bold'))
         display_error.place(x=5, y=200)
-        window.after(4000, display_error.destroy)
+        window.after(5000, display_error.destroy)
 
 #reset() function clears the whole board
 def reset():
