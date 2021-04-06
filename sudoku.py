@@ -1,5 +1,9 @@
 from tkinter import *
 
+#Declaring costant values
+GRID_SIZE = 9
+INNER_SQUARE_SIZE = 3
+
 #Sudoke Solver functions
 
 #function to check if it is possible to insert a number in square
@@ -16,8 +20,8 @@ def isPossible(sudoku, row, col, number):
             return False
     
     #checking if in square 3x3 there is already no number that we want to insert
-    for i in range(3*(row//3), 3*(row//3) + 3):
-        for j in range(3*(col//3), 3*(col//3) + 3):
+    for i in range(INNER_SQUARE_SIZE*(row//INNER_SQUARE_SIZE), INNER_SQUARE_SIZE*(row//INNER_SQUARE_SIZE) + INNER_SQUARE_SIZE):
+        for j in range(INNER_SQUARE_SIZE*(col//INNER_SQUARE_SIZE), INNER_SQUARE_SIZE*(col//INNER_SQUARE_SIZE) + INNER_SQUARE_SIZE):
             if i != row and j != col and sudoku[i][j] == number:
                 return False
 
@@ -26,15 +30,15 @@ def isPossible(sudoku, row, col, number):
 
 def solve(sudoku, row=0, col=0):
     #we run out of range of our array, so we move to the next line
-    if col == 9:
+    if col == GRID_SIZE:
         row += 1
         col = 0
     
-    if row == 9: #checking if sudoku is solved
+    if row == GRID_SIZE: #checking if sudoku is solved
         return True
 
     if sudoku[row][col] == "": #checking if there is any number in square 1x1
-        for number in range(1, 10):
+        for number in range(1, GRID_SIZE+1):
             if isPossible(sudoku, row, col, str(number)):#checking if it is possible to insert
                 sudoku[row][col] = str(number) #filling sudoku array with values
             
@@ -52,17 +56,17 @@ def solve(sudoku, row=0, col=0):
 
 #click() function gets data from user and prints solution to GUI 
 def click():
-    sudoku = [["" for _ in range(9)] for _ in range(9)]
-    for i in range(9):
-        for j in range(9):
+    sudoku = [["" for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
+    for i in range(GRID_SIZE):
+        for j in range(GRID_SIZE):
             sudoku[j][i] = input_container[i][j].get()
     
     #checking input from user
     temp = True
-    valid_numbers = set(str(_) for _ in range(1, 10))
+    valid_numbers = set(str(_) for _ in range(1, GRID_SIZE+1))
     valid_numbers.add("")
-    for i in range(9):
-        for j in range(9):
+    for i in range(GRID_SIZE):
+        for j in range(GRID_SIZE):
             if (sudoku[i][j] != "" and not isPossible(sudoku, i, j, str(sudoku[i][j]))) or\
                  sudoku[i][j] not in valid_numbers:
                 temp = False
@@ -70,8 +74,8 @@ def click():
     
     #if input is correct, solve sudoku, and fill the board with numbers
     if temp and solve(sudoku):
-        for i in range(9):
-            for j in range(9):
+        for i in range(GRID_SIZE):
+            for j in range(GRID_SIZE):
                 input_container[j][i].set(sudoku[i][j])
     
     #if sudoku is not solvable, display the message
@@ -82,8 +86,8 @@ def click():
 
 #reset() function clears the whole board
 def reset():
-    for i in range(9):
-        for j in range(9):
+    for i in range(GRID_SIZE):
+        for j in range(GRID_SIZE):
             input_container[j][i].set("")
 
 
@@ -95,13 +99,13 @@ window.title('Sudoku Solver')
 window.geometry('550x550')
 
 #array containing our Entries
-tab = [[" " for _ in range(9)] for _ in range(9)]
+tab = [[" " for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
 #array of numbers inputed by user
-input_container = [[StringVar() for _ in range(9)] for _ in range(9)]
+input_container = [[StringVar() for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
 
 
-for i in range(9):
-    for j in range(9):
+for i in range(GRID_SIZE):
+    for j in range(GRID_SIZE):
         #configuring entry and saving it to the array, so we can easily access it
         tab[i][j] = Entry(window, highlightthickness='0.5', highlightbackground='black', bd='0.5', fg='black', justify='center', font=("Canvas", 25, 'bold'), textvariable=input_container[i][j])
         
