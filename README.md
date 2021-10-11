@@ -71,3 +71,5 @@ In the future I am going to improve this project by adding an option to solve Su
 from the photo using OpenCV library in Python and making a better looking and more sophisticated GUI.
 
 <h1 id ="license"> ⚖️ License </h1>
+
+![GitHub](https://img.shields.io/github/license/CN-28/Sudoku-Solver)
