@@ -17,7 +17,7 @@ This Sudoku Solver is a classic 9x9 sudoku solver application.
 
 App uses recursive algorithm with backtracking to solve Sudoku.
 
-In every 1x1 square from 9x9 grid the user can enter number from to 1 to 9.
+In each 1x1 square from 9x9 grid the user can enter number from to 1 to 9.
 
 `SOLVE` - button, which fills the board with solved Sudoku.
 
@@ -57,7 +57,7 @@ python sudoku.py
 2. Left-click `SOLVE` button to solve Sudoku.
 3. Left-click `RESET` button to clear the board and return to first bullet point or quit the appliaction.
 
-If you enter invalid numbers or violate the rules of Sudoku, there will pop up the information, that sudoku with these values entered is not solvable.
+If you enter invalid numbers or violate the rules of Sudoku, there will pop up the information that sudoku is not solvable.
 
 <h1 id="tech-stack"> 👨‍💻 Tech stack </h1>
 
